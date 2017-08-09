@@ -4,7 +4,7 @@ abstract class Type
 {
     private $value;
     private $type = null;
-    private $types = ['boolean', 'integer', 'double', 'string', 'array', 'object', 'resource', 'null'];
+    private $types = ['boolean', 'integer', 'double', 'string', 'array', 'object'];
     
     final public function __construct($value)
     {
@@ -18,7 +18,7 @@ abstract class Type
     {
         $className = strtolower(static::class);
         $className = preg_replace('/(type)+$/', '', $className);
-        
+
         $this->type = $className;
     }
     
