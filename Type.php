@@ -2,10 +2,10 @@
 
 abstract class Type
 {
-    private $value;
-    private $type = null;
     private static $types = ['boolean', 'integer', 'double', 'string', 'array', 'object'];
-    
+    private $type = null;
+    private $value;
+
     final public function __construct($value)
     {
         $this->makeTypeFromClassName();
