@@ -56,7 +56,7 @@ abstract class Type
     {
         foreach (self::$aliases as $type => $aliases)
             if (is_array($aliases) && in_array($alias, $aliases)) return $type;
-            else return $alias;
+        return $alias;
     }
     
     final private function checkType()
