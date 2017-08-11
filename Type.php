@@ -16,12 +16,16 @@ abstract class Type
     
     final public static function make($value)
     {
-        return new static($value);
+        if (! in_array($type, self::$types))
+            throw new InvalidArgumentException("Invalid type given `{$type}`.");
     }
     
-    final public function __invoke()
+    final private static function checkDuplicateAliasType($alias)
     {
-        return $this->value;
+        foreach (self::$aliases as $type => $aliases) {
+            if (is_array($aliases) && in_array($alias, $aliases))
+                throw new InvalidArgumentException("The {$alias} alias is already set.");
+        }
     }
     
     final public function __toString()
