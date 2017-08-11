@@ -2,9 +2,9 @@
 
 abstract class Type
 {
-    protected $value;
-    protected $type = null;
-    protected $types = ['boolean', 'integer', 'double', 'string', 'array', 'object'];
+    private $value;
+    private $type = null;
+    private static $types = ['boolean', 'integer', 'double', 'string', 'array', 'object'];
     
     final public function __construct($value)
     {
@@ -16,16 +16,7 @@ abstract class Type
     
     final public static function make($value)
     {
-        if (! in_array($type, self::$types))
-            throw new InvalidArgumentException("Invalid type given `{$type}`.");
-    }
-    
-    final private static function checkDuplicateAliasType($alias)
-    {
-        foreach (self::$aliases as $type => $aliases) {
-            if (is_array($aliases) && in_array($alias, $aliases))
-                throw new InvalidArgumentException("The {$alias} alias is already set.");
-        }
+        return new static($value);
     }
     
     final public function __toString()
@@ -34,6 +25,11 @@ abstract class Type
             return serialize($this->value);
         
         return (string) $this->value;
+    }
+
+    final public function __invoke()
+    {
+        return $this->value;
     }
 
     final private function makeTypeFromClassName()
@@ -54,7 +50,7 @@ abstract class Type
 
     final private function checkType()
     {
-        if (! in_array($this->type, $this->types) || $this->type === null)
+        if (! in_array($this->type, self::$types) || $this->type === null)
             throw new InvalidArgumentException("Invalid type given `{$this->type}`.");
     }
 
