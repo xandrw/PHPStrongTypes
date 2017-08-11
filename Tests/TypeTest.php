@@ -6,6 +6,11 @@ require_once __DIR__ . '/../Type.php';
 
 class TypeTest extends TestCase
 {
+    public static function setUpBeforeClass()
+    {
+        Type::alias('StringMock', 'string');
+    }
+    
     /**
      * @test
      * @expectedException InvalidArgumentException
@@ -21,8 +26,7 @@ class TypeTest extends TestCase
      */
     public function it_should_fail_when_trying_to_add_duplicate_alias()
     {
-        Type::alias('StringMock', '1337');
-        Type::alias('StringMock', '1337');
+        Type::alias('StringMock', 'string');
     }
     
     /**
@@ -30,8 +34,6 @@ class TypeTest extends TestCase
      */
     public function it_should_add_an_alias_and_instantiate_an_aliased_type_class()
     {
-        Type::alias('StringMock', 'string');
-        
         $value = '1337';
         $stringType = new StringMockType($value);
         
