@@ -48,8 +48,7 @@ abstract class Type
     {
         $className = strtolower(static::class);
         $className = preg_replace('/(type)+$/', '', $className);
-        $aliasType = self::getAliasType($className);
-        $this->type = $aliasType ?: $className;
+        $this->type = self::getAliasType($className);
     }
     
     final private static function getAliasType($alias)
