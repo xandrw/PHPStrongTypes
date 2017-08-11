@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-require_once __DIR__ . '/../DoubleType.php';
+require_once __DIR__ . '/../Types/DoubleType.php';
 
 class DoubleTypeTest extends TestCase
 {

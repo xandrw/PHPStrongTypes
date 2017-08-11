@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-require_once __DIR__ . '/../IntegerType.php';
+require_once __DIR__ . '/../Types/IntegerType.php';
 
 class IntegerTypeTest extends TestCase
 {

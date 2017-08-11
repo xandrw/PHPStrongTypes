@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-require_once __DIR__ . '/../ArrayType.php';
+require_once __DIR__ . '/../Types/ArrayType.php';
 
 class ArrayTypeTest extends TestCase
 {

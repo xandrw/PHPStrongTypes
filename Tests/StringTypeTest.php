@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-require_once __DIR__ . '/../StringType.php';
+require_once __DIR__ . '/../Types/StringType.php';
 
 class StringTypeTest extends TestCase
 {
@@ -33,4 +33,16 @@ class StringTypeTest extends TestCase
         $this->assertEquals('string', $stringType());
         $this->assertTrue('string' === $stringType());
     }
+
+    /**
+     * @test
+     */
+    public function it_should_create_new_string_type_from_alias()
+    {
+        $alias = new StringTypeAlias('alias');
+        $this->assertEquals('alias', $alias());
+        $this->assertTrue('alias' === $alias());
+    }
 }
+
+class StringTypeAlias extends StringType {}

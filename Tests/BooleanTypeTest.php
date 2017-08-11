@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-require_once __DIR__ . '/../BooleanType.php';
+require_once __DIR__ . '/../Types/BooleanType.php';
 
 class BooleanTypeTest extends TestCase
 {
