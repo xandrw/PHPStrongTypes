@@ -36,4 +36,16 @@ class IntegerTypeTest extends TestCase
         $this->assertTrue(1 === $oneIntType());
         $this->assertFalse('2' === $twoIntType());
     }
+
+    /**
+     * @test
+     */
+    public function it_should_parse_a_numeric_string_value_to_an_integer()
+    {
+        $number = '1337';
+        $parsedNumber = IntegerType::parseInt($number);
+        $this->assertEquals($number, $parsedNumber);
+        $this->assertTrue((int) $number === $parsedNumber());
+        $this->assertFalse($number === $parsedNumber);
+    }
 }
