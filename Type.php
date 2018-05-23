@@ -40,8 +40,7 @@ abstract class Type
 
     final private function buildClassName()
     {
-        $r = new ReflectionClass(static::class);
-        $parentClassName = $r->getParentClass()->getName();
+        $parentClassName = parent::class;
 
         if ($parentClassName && $parentClassName !== self::class)
             return strtolower($parentClassName);
